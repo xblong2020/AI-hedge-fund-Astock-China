@@ -205,6 +205,7 @@ ai-hedge-fund-cn/
 │   │   └── input.py         # CLI 参数解析
 │   └── backtesting/         # 回测引擎
 ├── docker/                  # Docker 部署
+├── assets/                  # 项目展示资源（如收款码）
 ├── results/                 # 分析结果输出
 ├── .env                     # 环境变量（需手动创建）
 ├── .env.example             # 环境变量模板
@@ -237,6 +238,16 @@ run.bat --ticker 300476,600519 --start-date 2025-09-01 --end-date 2026-05-18 --m
 
 ### 某些指标显示 null/0.0
 部分 A 股数据源（如内部人交易、FCF 增长率）取决于公司披露和 Tushare 接口覆盖度。对于无数据的情况系统会显示默认值。
+
+---
+
+## 支持项目
+
+如果这个项目对你有帮助，欢迎以“请喝咖啡”的方式小额打赏，支持我继续维护 A 股数据源、分析代理和报告体验。感谢每一份鼓励！
+
+| 微信支付 | 支付宝 |
+|---------|--------|
+| <img src="assets/wechat-pay.jpg" alt="微信支付收款码" width="260"> | <img src="assets/alipay.jpg" alt="支付宝收款码" width="260"> |
 
 ---
 
