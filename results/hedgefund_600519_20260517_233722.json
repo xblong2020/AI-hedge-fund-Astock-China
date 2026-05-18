@@ -1,0 +1,337 @@
+{
+  "decisions": {
+    "600519": {
+      "action": "short",
+      "quantity": 14,
+      "confidence": 85,
+      "reasoning": "Majority bearish high conf, short max qty."
+    }
+  },
+  "analyst_signals": {
+    "fundamentals_analyst_agent": {
+      "600519": {
+        "signal": "bullish",
+        "confidence": 50.0,
+        "reasoning": {
+          "profitability_signal": {
+            "signal": "bullish",
+            "details": "ROE: 10.57%, Net Margin: 52.22%, Op Margin: 68.62%"
+          },
+          "growth_signal": {
+            "signal": "neutral",
+            "details": "Revenue Growth: 6.54%, Earnings Growth: 1.47%"
+          },
+          "financial_health_signal": {
+            "signal": "bullish",
+            "details": "Current Ratio: 7.06, D/E: 0.14"
+          },
+          "price_ratios_signal": {
+            "signal": "neutral",
+            "details": "P/E: 20.28, P/B: 6.16, P/S: N/A"
+          }
+        }
+      }
+    },
+    "technical_analyst_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 8,
+        "reasoning": {
+          "trend_following": {
+            "signal": "bearish",
+            "confidence": 30,
+            "metrics": {
+              "adx": 29.873111781661127,
+              "trend_strength": 0.29873111781661127
+            }
+          },
+          "mean_reversion": {
+            "signal": "bullish",
+            "confidence": 57,
+            "metrics": {
+              "z_score": -2.261854725063612,
+              "price_vs_bb": 0.10522485306770195,
+              "rsi_14": 28.970935662875675,
+              "rsi_28": 31.452535264963785
+            }
+          },
+          "momentum": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "momentum_1m": -0.07734249267675053,
+              "momentum_3m": 0.0,
+              "momentum_6m": 0.0,
+              "volume_momentum": 1.2824193609330328
+            }
+          },
+          "volatility": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "historical_volatility": 0.2261220511573954,
+              "volatility_regime": 0.0,
+              "volatility_z_score": 0.0,
+              "atr_ratio": 0.016435082228998008
+            }
+          },
+          "statistical_arbitrage": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "hurst_exponent": 4.686994974318529e-16,
+              "skewness": 0.0,
+              "kurtosis": 0.0
+            }
+          }
+        }
+      }
+    },
+    "valuation_analyst_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 100,
+        "reasoning": {
+          "dcf_analysis": {
+            "signal": "bearish",
+            "details": "Value: $374,221,184,531.91, Market Cap: $1,669,213,583,084.00, Gap: -77.6%, Weight: 35%\n  WACC: 10.5%, Bear: $242,532,026,707.13, Bull: $500,622,242,274.00, Range: $258,090,215,566.87"
+          },
+          "residual_income_analysis": {
+            "signal": "bearish",
+            "details": "Value: $234,985,183,284.24, Market Cap: $1,669,213,583,084.00, Gap: -85.9%, Weight: 10%"
+          },
+          "dcf_scenario_analysis": {
+            "bear_case": "$242,532,026,707.13",
+            "base_case": "$375,983,884,559.48",
+            "bull_case": "$500,622,242,274.00",
+            "wacc_used": "10.5%",
+            "fcf_periods_analyzed": 7
+          }
+        }
+      }
+    },
+    "growth_analyst_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 28,
+        "reasoning": {
+          "historical_growth": {
+            "score": 0.15000000000000002,
+            "revenue_growth": 0.06538000000000001,
+            "revenue_trend": 0.018236593939393947,
+            "eps_growth": 0.017774,
+            "eps_trend": 0.019687721212121197,
+            "fcf_growth": null,
+            "fcf_trend": 0.0
+          },
+          "growth_valuation": {
+            "score": 0,
+            "peg_ratio": null,
+            "price_to_sales_ratio": null
+          },
+          "margin_expansion": {
+            "score": 1.0,
+            "gross_margin": 0.8975920000000001,
+            "gross_margin_trend": 0.0014277696969697625,
+            "operating_margin": 0.686198,
+            "operating_margin_trend": 0.0007464969696968982,
+            "net_margin": 0.522245,
+            "net_margin_trend": 0.000943509090909181
+          },
+          "insider_conviction": {
+            "score": 0.5,
+            "net_flow_ratio": 0,
+            "buys": 0,
+            "sells": 0
+          },
+          "financial_health": {
+            "score": 1.0,
+            "debt_to_equity": 0.138,
+            "current_ratio": 7.0607
+          },
+          "final_analysis": {
+            "signal": "bearish",
+            "confidence": 28,
+            "weighted_score": 0.36
+          }
+        }
+      }
+    },
+    "mohnish_pabrai_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 25.0,
+        "reasoning": "Downside protection looks solid—net cash, strong liquidity, minimal debt—but the price is a non-starter. At a 1.7% FCF yield, Moutai is priced for perfection, offering no margin of safety. There's no identifiable catalyst or setup for doubling in 2-3 years; the score for that is zero. I don't see mispricing worth acting on. The business is a great asset-light, high-moat franchise, but the current price doesn't allow me to win big with limited downside. I'll pass."
+      }
+    },
+    "news_sentiment_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": {
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0.0,
+            "metrics": {
+              "total_articles": 18,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 18,
+              "articles_classified_by_llm": 0
+            }
+          }
+        }
+      }
+    },
+    "aswath_damodaran_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 25.0,
+        "reasoning": "Moutai is a high-margin, debt-free baijiu giant with dominant brand power and 6.5% revenue growth. However, flat or declining FCFF, a negative FCF yield, and missing intrinsic valuation inputs (FCFF, share count) prevent a clear bullish signal. Relative valuation (P/E in line with history) offers no edge, while earnings growth is slowing to ~1.5%. The story is stable but lacks catalysts, and the 9% cost of equity implies high required returns that current earnings (P/E ~20) barely meet. Neutral given incomplete data and no margin of safety."
+      }
+    },
+    "cathie_wood_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "While Kweichow Moutai demonstrates exceptional financial health with a 68.2% gross margin, 69.6% operating margin, and remarkable 125.1% growth in R&D investment, the company fundamentally lacks the disruptive innovation DNA that drives exponential growth. As a premium baijiu producer, it operates in a traditional consumer staples market with limited total addressable market expansion potential and no transformative technology that could reshape industries or create new markets. The valuation analysis confirms this concern: our calculated intrinsic value of approximately ¥963 billion falls significantly short of the current market cap of ¥1.67 trillion, implying a -42.3% margin of safety. Even with strong free cash flow generation and R&D investment, this is an established brand benefiting from pricing power and scarcity, not a disruptive platform poised for exponential adoption curves over multi-year horizons. The stock may be a quality holding, but it does not meet our criteria for a high-conviction disruptive innovation investment."
+      }
+    },
+    "ben_graham_agent": {
+      "600519": {
+        "signal": "bullish",
+        "confidence": 85.0,
+        "reasoning": "The stock meets several of Benjamin Graham's key criteria for investment. The current ratio of 7.06 far exceeds Graham's minimum threshold of 2.0, indicating ample short-term financial strength. The debt ratio of 0.12 is well below the conservative 0.50 level, showing the company relies very little on leverage. Earnings have been positive in all available periods and have grown over time, demonstrating stability and profitability. Most importantly, the margin of safety is substantial: the current price of 1466.8 is far below the calculated Graham Number of 3.32 (a margin of 2387%). However, this exceptionally large margin of safety is likely due to a mismatch in the Graham Number calculation—perhaps the earnings or book value per share are being misreported or the figures have different units. Nonetheless, based on the provided analysis, the financial strength and profitability metrics point decisively to a bullish outlook. The only minor concern is the lack of dividend data, which would otherwise provide an additional layer of defensive safety."
+      }
+    },
+    "rakesh_jhunjhunwala_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Arre bhai, let me tell you straight up—this stock is not for me. The intrinsic value is around ₹37,600 crore, but the market cap is a whopping ₹1,66,921 crore. That’s a margin of safety of negative 77%! There is absolutely no cushion for error here, and I always demand a 30% discount to intrinsic value. This is the opposite of that. The growth is also weak—revenue CAGR of just 2.1%, income growth at 1.6%, and inconsistent earnings pattern. That does not excite me one bit. I look for companies with consistent, double-digit growth that can compound wealth over the long term. The balance sheet is strong with low debt and excellent liquidity, and free cash flow is positive, but at this price, you are paying for perfection and getting mediocrity. The management analysis shows no data—no buybacks, no share issuance—so I cannot give credit there. A 10% ROE is decent, but nothing extraordinary. As Jhunjhunwala sahab says, 'The market is a vehicle for creating wealth, not a casino,' and this looks like a rich valuation with no future growth to justify it. I say be cautious—wait for the price to come down or fundamentals to show a clear upturn. For now, stay away."
+      }
+    },
+    "warren_buffett_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 60,
+        "reasoning": "Decent moat and strong margins but weak ROE, inconsistent earnings, and lack of intrinsic value data prevent clear bullish call."
+      }
+    },
+    "sentiment_analyst_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": {
+          "insider_trading": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_trades": 0,
+              "bullish_trades": 0,
+              "bearish_trades": 0,
+              "weight": 0.3,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_articles": 14,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 14,
+              "weight": 0.7,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "combined_analysis": {
+            "total_weighted_bullish": 0.0,
+            "total_weighted_bearish": 0.0,
+            "signal_determination": "Neutral based on weighted signal comparison"
+          }
+        }
+      }
+    },
+    "bill_ackman_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "This is Moutai (600519), a legendary Chinese baijiu brand with an immense competitive moat—an irreplaceable cultural status, pricing power, and near-zero competition in its tier. However, the numbers here do not support an attractive entry point. Revenue growth of only 6.5% cumulatively is anemic for a company with such a dominant brand; this suggests either demand saturation or management complacency. While operating margins are strong and free cash flow is positive, the 10.6% ROE is low for a consumer-staple powerhouse that should be generating returns north of 20% if capital were deployed efficiently. The balance sheet is clean (low leverage, share buybacks), but no dividends are a red flag—this signals poor capital allocation discipline. The valuation is egregious: my intrinsic value estimate of ¥446 billion implies a margin of safety of -73% against the current market cap of ¥1.67 trillion. At 3.7x intrinsic value, this is a bubble. There is no activism angle here—management is complacent, growth is sluggish, and the stock is priced for perfection. I would short this or wait for a 50%+ correction before even considering a position. Moutai’s moat is real, but price matters. This is not the time to buy."
+      }
+    },
+    "nassim_taleb_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 55,
+        "reasoning": "Antifragile margins and debt-free but insiders selling (no skin) and thin tails signal hidden fragility. Low convexity offsets stability."
+      }
+    },
+    "charlie_munger_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 34,
+        "reasoning": "Expensive valuation with 75% premium to fair value, low FCF yield, and declining FCF trend despite good predictability."
+      }
+    },
+    "stanley_druckenmiller_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 75.0,
+        "reasoning": "The company's growth and momentum metrics are unimpressive — revenue growth is anemic at 1.6% and EPS growth is virtually flat at 0.4%, with the stock down 9.1% over the past three months. This is a dead money situation with no catalyst to reignite momentum. The valuation is egregious: a P/E of 59.29 and P/FCF of 63.46, pricing in perfection when growth is barely positive. I'm being asked to pay a massive premium for stagnation — that's a losing proposition. The risk-reward is asymmetric to the downside: limited upside from these levels given the lack of earnings acceleration, but significant downside if the multiple contracts even modestly. On the positive side, low debt and neutral sentiment provide some floor, but they don't change the core thesis. I'd rather be aggressive elsewhere; cutting this position quickly if I owned it. The opportunity cost is too high."
+      }
+    },
+    "michael_burry_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 75.0,
+        "reasoning": "FCF yield 1.6% — insufficient return for value. EV/EBIT unavailable. Debt-to-equity 0.14 and net cash are positives, but not enough. Net insider selling confirms lack of conviction. No contrarian opportunity (no negative press to exploit). Market cap $1.7T — no margin of safety. Pass."
+      }
+    },
+    "peter_lynch_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Well, I'll tell you, this stock is just too expensive for my taste. The PEG ratio is a whopping 134.32, which is like paying a king's ransom for a pittance of growth. The earnings per share are barely crawling at 0.4% annually, but the P/E is strutting around at 59.29. That's not a recipe for a ten-bagger, that's a recipe for disappointment. Now, sure, the fundamentals are strong—low debt, great margins, and plenty of cash. If my kids were in the boardroom, they'd give it an A+ on financial health. But the story here is a slow-growth giant with a sky-high price tag. I've seen this before: a great company can be a terrible stock if you pay too much. With earnings growth so anemic, you'd need decades to justify that valuation. Give me a company with a PEG under 1, a little sizzle in earnings, and a story I can understand from the grocery store aisle. This one, I'd pass on."
+      }
+    },
+    "phil_fisher_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 50.0,
+        "reasoning": "While Kweichow Moutai exhibits several hallmarks of a quality enterprise befitting a Fisher investment, the extreme valuation premium compels a neutral stance until price aligns more closely with intrinsic worth. The company's consistently high gross margins of 68.2% and extraordinarily stable operating margins reflect a durable competitive advantage rooted in brand pricing power—a key sign of a firm with a 'favorable long-term outlook.' Management has demonstrated operational efficiency with a low debt-to-equity ratio of 0.14 and strong free cash flow generation over five consecutive years, indicating prudent capital stewardship. However, the near-zero R&D intensity (0.1% of revenue) is not a concern for a premium consumer staple, as Moutai's 'R&D' is brand equity and distribution. The critical deterrent from a Fisher perspective is the excessive valuation: a P/E of 59.29 and P/FCF of 63.46 leave no margin of safety for long-term compounding, especially given minimal revenue (1.6%) and EPS (0.4%) growth. Even a world-class business purchased at too high a price can produce disappointing long-term returns. Positive sentiment and no insider selling provide comfort, but the price must offer a more attractive entry point to reflect the company's future earnings power before a bullish commitment is warranted, in accordance with Fisher's principle of 'paying a fair price for an excellent company.'"
+      }
+    },
+    "risk_management_agent": {
+      "600519": {
+        "remaining_position_limit": 19413.196638494373,
+        "current_price": 1332.95,
+        "volatility_metrics": {
+          "daily_volatility": 0.013145625546755978,
+          "annualized_volatility": 0.20868033615056283,
+          "volatility_percentile": 28.000000000000004,
+          "data_points": 54
+        },
+        "correlation_metrics": {
+          "avg_correlation_with_active": null,
+          "max_correlation_with_active": null,
+          "top_correlated_tickers": []
+        },
+        "reasoning": {
+          "portfolio_value": 100000.0,
+          "current_position_value": 0.0,
+          "base_position_limit_pct": 0.19413196638494373,
+          "correlation_multiplier": 1.0,
+          "combined_position_limit_pct": 0.19413196638494373,
+          "position_limit": 19413.196638494373,
+          "remaining_limit": 19413.196638494373,
+          "available_cash": 100000.0,
+          "risk_adjustment": "Volatility x Correlation adjusted: 19.4% (base 19.4%)"
+        }
+      }
+    }
+  }
+}

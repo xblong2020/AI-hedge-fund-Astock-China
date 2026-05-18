@@ -1,0 +1,47 @@
+{
+  "decisions": {
+    "MSFT": {
+      "action": "hold",
+      "quantity": 0,
+      "confidence": 60,
+      "reasoning": "Neutral signal with 60% confidence"
+    }
+  },
+  "analyst_signals": {
+    "peter_lynch_agent": {
+      "MSFT": {
+        "signal": "neutral",
+        "confidence": 60.0,
+        "reasoning": "Well, I’m looking at Microsoft, and I’m seeing a classic tale of a wonderful business at a price I can’t quite figure out. The numbers on the growth side are incredible – revenue up 32.9% and earnings per share skyrocketing 40.9%. That’s the kind of expansion that gets me excited, the sort of story where you wish you could hop in a time machine and buy it five years ago. The fundamentals are rock-solid, too: debt is tiny relative to equity, operating margins are a dreamy 44.7%, and they’re generating more free cash flow than most companies could dream of. Plus, I see insiders are buying more than they’re selling – 33 buys to 16 sells – that’s a nice little vote of confidence from the folks in the know. But here’s the rub: I can’t find any valuation data. No PEG ratio to tell me if I’m paying a fair price for that growth. Without the price tag, it’s like walking into a store and knowing you love the product but having no clue if it’s on sale or marked up 300%. My kids use Windows and Office, and I’ve seen how Microsoft products are everywhere – it’s a ten-bagger in its past, no doubt. But at this size, expecting another ten-bagger is like casting a net in a pond you’ve already fished dry. So, I’m stuck in neutral. It’s a great company, but without the PEG, I can’t call it a GARP play. I’m not selling it; I’m just not buying more until I see the sticker price."
+      }
+    },
+    "risk_management_agent": {
+      "MSFT": {
+        "remaining_position_limit": 18774.07582662899,
+        "current_price": 409.43,
+        "volatility_metrics": {
+          "daily_volatility": 0.017171708227521478,
+          "annualized_volatility": 0.27259241733710143,
+          "volatility_percentile": 37.5,
+          "data_points": 60
+        },
+        "correlation_metrics": {
+          "avg_correlation_with_active": null,
+          "max_correlation_with_active": null,
+          "top_correlated_tickers": []
+        },
+        "reasoning": {
+          "portfolio_value": 100000.0,
+          "current_position_value": 0.0,
+          "base_position_limit_pct": 0.1877407582662899,
+          "correlation_multiplier": 1.0,
+          "combined_position_limit_pct": 0.1877407582662899,
+          "position_limit": 18774.07582662899,
+          "remaining_limit": 18774.07582662899,
+          "available_cash": 100000.0,
+          "risk_adjustment": "Volatility x Correlation adjusted: 18.8% (base 18.8%)"
+        }
+      }
+    }
+  }
+}

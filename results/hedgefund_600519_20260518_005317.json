@@ -1,0 +1,47 @@
+{
+  "decisions": {
+    "600519": {
+      "action": "short",
+      "quantity": 14,
+      "confidence": 92,
+      "reasoning": "Bearish signal with high confidence"
+    }
+  },
+  "analyst_signals": {
+    "michael_burry_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 92.0,
+        "reasoning": "FCF yield 1.6%, EV/EBIT 43.8. No value here. Balance sheet clean (D/E 0.14) but stock priced for perfection at 43x earnings. Insiders selling. No contrarian catalyst. Pass."
+      }
+    },
+    "risk_management_agent": {
+      "600519": {
+        "remaining_position_limit": 19413.196638494373,
+        "current_price": 1332.95,
+        "volatility_metrics": {
+          "daily_volatility": 0.013145625546755978,
+          "annualized_volatility": 0.20868033615056283,
+          "volatility_percentile": 28.000000000000004,
+          "data_points": 54
+        },
+        "correlation_metrics": {
+          "avg_correlation_with_active": null,
+          "max_correlation_with_active": null,
+          "top_correlated_tickers": []
+        },
+        "reasoning": {
+          "portfolio_value": 100000.0,
+          "current_position_value": 0.0,
+          "base_position_limit_pct": 0.19413196638494373,
+          "correlation_multiplier": 1.0,
+          "combined_position_limit_pct": 0.19413196638494373,
+          "position_limit": 19413.196638494373,
+          "remaining_limit": 19413.196638494373,
+          "available_cash": 100000.0,
+          "risk_adjustment": "Volatility x Correlation adjusted: 19.4% (base 19.4%)"
+        }
+      }
+    }
+  }
+}

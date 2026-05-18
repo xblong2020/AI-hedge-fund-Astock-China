@@ -1,0 +1,246 @@
+{
+  "decisions": {
+    "600519": {
+      "action": "short",
+      "quantity": 14,
+      "confidence": 65,
+      "reasoning": "Most bearish signals with high confidence"
+    }
+  },
+  "analyst_signals": {
+    "growth_analyst_agent": {},
+    "fundamentals_analyst_agent": {},
+    "valuation_analyst_agent": {},
+    "sentiment_analyst_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 0,
+        "reasoning": {
+          "insider_trading": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_trades": 0,
+              "bullish_trades": 0,
+              "bearish_trades": 0,
+              "weight": 0.3,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_articles": 0,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 0,
+              "weight": 0.7,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "combined_analysis": {
+            "total_weighted_bullish": 0.0,
+            "total_weighted_bearish": 0.0,
+            "signal_determination": "Neutral based on weighted signal comparison"
+          }
+        }
+      }
+    },
+    "news_sentiment_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": {
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0.0,
+            "metrics": {
+              "total_articles": 0,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 0,
+              "articles_classified_by_llm": 0
+            }
+          }
+        }
+      }
+    },
+    "technical_analyst_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 8,
+        "reasoning": {
+          "trend_following": {
+            "signal": "bearish",
+            "confidence": 30,
+            "metrics": {
+              "adx": 29.873111781661127,
+              "trend_strength": 0.29873111781661127
+            }
+          },
+          "mean_reversion": {
+            "signal": "bullish",
+            "confidence": 57,
+            "metrics": {
+              "z_score": -2.261854725063612,
+              "price_vs_bb": 0.10522485306770195,
+              "rsi_14": 28.970935662875675,
+              "rsi_28": 31.452535264963785
+            }
+          },
+          "momentum": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "momentum_1m": -0.07734249267675053,
+              "momentum_3m": 0.0,
+              "momentum_6m": 0.0,
+              "volume_momentum": 1.2824193609330328
+            }
+          },
+          "volatility": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "historical_volatility": 0.2261220511573954,
+              "volatility_regime": 0.0,
+              "volatility_z_score": 0.0,
+              "atr_ratio": 0.016435082228998008
+            }
+          },
+          "statistical_arbitrage": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "hurst_exponent": 4.686994974318529e-16,
+              "skewness": 0.0,
+              "kurtosis": 0.0
+            }
+          }
+        }
+      }
+    },
+    "warren_buffett_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 50,
+        "reasoning": "Excellent ROE suggests strong moat, but data gaps (debt, op margin, intrinsic value) prevent assessing safety. Need more information."
+      }
+    },
+    "michael_burry_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 0.0,
+        "reasoning": "No data. FCF unavailable. EV/EBIT unknown. Debt-to-equity unknown. No insider buying. Not actionable. Pass."
+      }
+    },
+    "mohnish_pabrai_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 10.0,
+        "reasoning": "Heads I win, tails I don't lose much — this setup fails the first test. There is simply insufficient data to assess the downside, moat, leverage, or free cash flow yield. Without those, I cannot intelligently estimate intrinsic value or the potential to double in 2-3 years. The market cap is massive at ¥1.67 trillion, but with no visibility on normalized FCF or a margin of safety, capital preservation is impossible to guarantee. This is a pass. I'd rather wait for a clear mispricing in a business I understand, even if it means sitting in cash."
+      }
+    },
+    "charlie_munger_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 30,
+        "reasoning": "All scores are zero, data insufficient, and pre-signal is bearish."
+      }
+    },
+    "aswath_damodaran_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 30.0,
+        "reasoning": "600519 (Kweichow Moutai) is a premier Chinese baijiu brand with an exceptionally high gross margin (89.8%) and net margin (52.2%), strong liquidity (current ratio 7.06), and low leverage (debt-to-assets 12.1%). However, growth is slowing: revenue growth of 6.5% and earnings growth of only 1.5% TTM, with flat/declining free cash flow. The cost of equity is estimated at 9%, but key risk inputs (beta, D/E, interest coverage) are missing, and no intrinsic value estimate could be computed due to insufficient FCFF data. At a P/E of 20.4x (inline with history), the stock appears fairly valued relative to its own past but offers no clear margin of safety. The major uncertainty is the sustainability of growth in a slowing Chinese economy and regulatory environment, which could compress margins or lower reinvestment returns. Without a compelling valuation gap or catalyst, the signal is neutral."
+      }
+    },
+    "cathie_wood_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 95.0,
+        "reasoning": "This analysis confirms my long-held conviction that Kweichow Moutai represents everything we do not look for in our innovation-driven strategy. There is zero evidence of disruptive technology, no R&D investment to speak of, and no scalable platform powering exponential growth. We simply cannot generate any meaningful scores across disruptive analysis, innovation metrics, or forward-looking valuation. While Moutai may be a legacy luxury consumer staple with strong brand equity, it is a company of the past, not the future. Its business model is linear, not exponential; it lacks the technological moat and R&D intensity required to compound value at the rates we seek over a multi-year horizon. In a world being transformed by artificial intelligence, genomics, blockchain, and energy storage, capital must be allocated to companies building the future, not preserving the status quo. We rate this stock as bearish with high conviction."
+      }
+    },
+    "ben_graham_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 0.0,
+        "reasoning": "The analysis for 600519 reveals a complete absence of the data required to apply Benjamin Graham's principles. No earnings history is available to assess stability or consistency over time, which is a fundamental prerequisite for any investment consideration. No financial strength metrics—such as current ratio, debt levels, or book value—are provided, making it impossible to gauge the margin of safety against liabilities. Valuation metrics like the Graham Number, net current asset value, or price-to-earnings ratio are also missing, leaving no basis to determine whether the stock trades below intrinsic value. In Graham's conservative framework, a lack of verifiable, quantitative evidence about a company's earnings record, financial solidity, and valuation precludes any prudent investment. Therefore, the only rational conclusion is to avoid this security entirely, as it fails every criterion for a sound, margin-of-safety investment."
+      }
+    },
+    "bill_ackman_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 70.0,
+        "reasoning": "This is a frustratingly incomplete dataset. A 1056.9% ROE screams 'moat'—likely a dominant consumer brand with pricing power and high returns on capital. The balance sheet shows financial discipline: liabilities under 50% of assets and a declining share count (buybacks). That's the kind of capital allocation I respect. But where is the revenue trend? Operating margins? Free cash flow? Without these, I cannot validate the durability of the moat or the consistency of cash generation. And a zero free cash flow figure is a red flag—either the data is wrong (unlikely for a high-ROE company) or there's a capital allocation issue. I cannot justify paying a premium for earnings if cash isn't flowing. The valuation analysis fails entirely. This is a pass until I see multi-year FCF, margins, and a clear intrinsic value calculation. I will not chase a narrative without numbers."
+      }
+    },
+    "phil_fisher_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 50.0,
+        "reasoning": "At this juncture, the available data for Moutai (600519) is severely limited for a thorough Phil Fisher analysis. I cannot evaluate the company's growth quality, margin stability, or management efficiency due to a lack of financial data. Furthermore, valuation analysis is impossible, and insider activity and sentiment data are merely defaulting to neutral. Phil Fisher's approach demands deep, fundamental research—what he called 'scuttlebutt'—to assess a company's long-term prospects, management's capital allocation wisdom, and R&D-driven innovation. For a company as storied as Kweichow Moutai, with its legendary brand moat and pricing power, this absence of critical information prevents any definitive bullish or bearish conviction. I cannot confidently recommend an investment based on speculation alone. I will wait for a more complete picture before forming a decisive opinion."
+      }
+    },
+    "nassim_taleb_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 55,
+        "reasoning": "Thin margins buffer fragility but volatile earnings; low vol regime and no skin-in-the-game data; lacks clear convexity."
+      }
+    },
+    "peter_lynch_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 25.0,
+        "reasoning": "Listen, I can't tell you much about this stock because the data is just too thin. There’s no revenue or earnings growth to speak of, no debt figures, no margins, no free cash flow. It’s like trying to judge a horse race when you haven’t even seen the horses. Without a reliable P/E, no PEG ratio to speak of, and no real story from management or insider moves, I have to say pass. I'd rather wait until there’s something solid to sink my teeth into."
+      }
+    },
+    "rakesh_jhunjhunwala_agent": {
+      "600519": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": "Yaar, I am a man who trusts my gut, but my gut is only as good as the data I consume. This analysis for 600519 is completely empty — zero data on profitability, growth, balance sheet, cash flow, or management actions. Without these pillars, how can I assess the margin of safety? How can I gauge the economic moat or the quality of management? I cannot invest in the dark. The current market cap is astronomical at roughly ₹1,700 crore, but with no intrinsic value estimate, I have no idea if this is a diamond in the rough or a bubble waiting to pop. My principle is clear: I only invest in businesses I understand. Right now, I understand nothing about this company's financial health. So, I am neutral with zero conviction. I will wait for detailed annual reports, audited numbers, and a clear picture of earnings and debt before I even think of putting a single rupee in. Aap paise nahi, business mein invest karo — but pehle business ko samjho!"
+      }
+    },
+    "stanley_druckenmiller_agent": {
+      "600519": {
+        "signal": "bearish",
+        "confidence": 65.0,
+        "reasoning": "This is a classic capital preservation scenario. Despite neutral sentiment and insider activity, the core growth and momentum metrics are abysmal—negative price momentum of -9.1% and insufficient revenue/EPS data to confirm any positive trajectory. The risk-reward is unfavorable: volatility is moderate but there's no clear upside catalyst, and valuation metrics are uncomputable due to negative or zero earnings and cash flow, suggesting financial distress or opacity. I'm not interested in catching a falling knife without a compelling asymmetric setup. I'd rather stay in cash or rotate into names with accelerating growth, strong momentum, and a clear path to 50%+ upside. The lack of data itself is a red flag—if I can't model the business, I don't own it."
+      }
+    },
+    "risk_management_agent": {
+      "600519": {
+        "remaining_position_limit": 19413.196638494373,
+        "current_price": 1332.95,
+        "volatility_metrics": {
+          "daily_volatility": 0.013145625546755978,
+          "annualized_volatility": 0.20868033615056283,
+          "volatility_percentile": 28.000000000000004,
+          "data_points": 54
+        },
+        "correlation_metrics": {
+          "avg_correlation_with_active": null,
+          "max_correlation_with_active": null,
+          "top_correlated_tickers": []
+        },
+        "reasoning": {
+          "portfolio_value": 100000.0,
+          "current_position_value": 0.0,
+          "base_position_limit_pct": 0.19413196638494373,
+          "correlation_multiplier": 1.0,
+          "combined_position_limit_pct": 0.19413196638494373,
+          "position_limit": 19413.196638494373,
+          "remaining_limit": 19413.196638494373,
+          "available_cash": 100000.0,
+          "risk_adjustment": "Volatility x Correlation adjusted: 19.4% (base 19.4%)"
+        }
+      }
+    }
+  }
+}

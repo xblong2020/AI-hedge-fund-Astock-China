@@ -1,0 +1,315 @@
+{
+  "decisions": {
+    "300476": {
+      "action": "short",
+      "quantity": 29,
+      "confidence": 75,
+      "reasoning": "Strong bearish consensus (Pabrai, Ackman, Burry, etc.) with high confidence. Max short qty."
+    }
+  },
+  "analyst_signals": {
+    "fundamentals_analyst_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 50.0,
+        "reasoning": {
+          "profitability_signal": {
+            "signal": "bullish",
+            "details": "ROE: 7.57%, Net Margin: 23.34%, Op Margin: 27.22%"
+          },
+          "growth_signal": {
+            "signal": "bullish",
+            "details": "Revenue Growth: 27.99%, Earnings Growth: 39.95%"
+          },
+          "financial_health_signal": {
+            "signal": "bearish",
+            "details": "Current Ratio: 0.92, D/E: 1.23"
+          },
+          "price_ratios_signal": {
+            "signal": "bearish",
+            "details": "P/E: 77.54, P/B: 9.37, P/S: N/A"
+          }
+        }
+      }
+    },
+    "technical_analyst_agent": {
+      "300476": {
+        "signal": "bullish",
+        "confidence": 25,
+        "reasoning": {
+          "trend_following": {
+            "signal": "bullish",
+            "confidence": 51,
+            "metrics": {
+              "adx": 51.11700672393913,
+              "trend_strength": 0.5111700672393913
+            }
+          },
+          "mean_reversion": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "z_score": 1.1225856101417035,
+              "price_vs_bb": 0.5325147290646135,
+              "rsi_14": 49.27429413765734,
+              "rsi_28": 62.53925120772947
+            }
+          },
+          "momentum": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "momentum_1m": 0.15269667756805294,
+              "momentum_3m": 0.0,
+              "momentum_6m": 0.0,
+              "volume_momentum": 1.0500763360488417
+            }
+          },
+          "volatility": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "historical_volatility": 0.7146970090986681,
+              "volatility_regime": 0.0,
+              "volatility_z_score": 0.0,
+              "atr_ratio": 0.06489708339981694
+            }
+          },
+          "statistical_arbitrage": {
+            "signal": "neutral",
+            "confidence": 50,
+            "metrics": {
+              "hurst_exponent": 4.686994974318529e-16,
+              "skewness": 0.0,
+              "kurtosis": 0.0
+            }
+          }
+        }
+      }
+    },
+    "valuation_analyst_agent": {},
+    "warren_buffett_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 30,
+        "reasoning": "High debt, weak ROE, inconsistent earnings, and limited moat. Outside circle of competence."
+      }
+    },
+    "mohnish_pabrai_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 90.0,
+        "reasoning": "Heads I win, tails I don't lose much — but here, tails I lose big. Net debt of ₹17.7 billion, a current ratio below 1 (0.92), and a D/E of 1.23 signal a fragile balance sheet. Negative free cash flow means the business is burning cash, not generating it. There's no FCF yield to speak of, and normalized FCF is deeply negative. No moat or asset-light comfort here. The only bright spot is revenue and FCF growth trajectory, but that's irrelevant if the company is levered and bleeding cash. Doubling potential requires a catalyst and a margin of safety; this has neither. I'll pass — too many ways to lose capital permanently."
+      }
+    },
+    "news_sentiment_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": {
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0.0,
+            "metrics": {
+              "total_articles": 15,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 15,
+              "articles_classified_by_llm": 0
+            }
+          }
+        }
+      }
+    },
+    "aswath_damodaran_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 40.0,
+        "reasoning": "The company's story is unclear from the data. Revenue growth is strong at 28% and earnings growth is nearly 40%, suggesting a high-growth narrative. However, free cash flow is negative or flat (negative FCF yield), and the company has a high debt-to-equity ratio of 1.23, which raises risk. Valuation multiples are stretched: a P/E of 77.5 and P/B of 9.4, with a low ROE of 7.6% — indicating the market is pricing in future improvements that are not yet reflected in returns. The intrinsic value estimate is missing due to lack of FCFF data. Without a clear margin of safety or ability to model cash flows, I cannot justify a bullish or bearish stance. The high growth is offset by poor cash flow generation and elevated leverage, leading to a neutral signal."
+      }
+    },
+    "bill_ackman_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Let's call it as it is. This is a low-quality business that fails every test of a durable, high-return enterprise. Revenue growth is tepid at 28% cumulative, hardly a sign of a compounding machine. Operating margins have occasionally hit 15%, but that's a mirage when free cash flow is deeply negative — to the tune of negative $1.46 billion. That tells me earnings are not real; the company is burning cash, not generating it. The balance sheet is a red flag: liabilities exceed 50% of assets consistently, no dividends, and no share buybacks — management is not returning capital, nor are they signaling confidence. With ROE of only 7.6%, this isn't a business that creates value above its cost of capital. There is no activism angle here; margins are already decent, and growth is weak — no catalyst to unlock value. Valuation is impossible to assess with negative free cash flow; there is no margin of safety. I would not touch this with a ten-foot pole. Avoid."
+      }
+    },
+    "charlie_munger_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 30,
+        "reasoning": "Weak moat, poor management alignment, negative FCF, and high debt offset moderate predictability."
+      }
+    },
+    "cathie_wood_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 72.5,
+        "reasoning": "Despite our enthusiasm for the future of connected devices and the industrial internet, 300476 fails to meet our standards for a truly disruptive investment. The company's core metrics reveal a critical flaw: a complete inability to generate positive free cash flow (FCF = -1.46B). Without positive FCF, we cannot apply our forward-looking valuation models, and this is a non-negotiable red flag for a high-conviction growth holding. While management is investing heavily in growth infrastructure—which we typically applaud—the lack of operating leverage and the inability to convert revenue into cash suggest the business model may not be as scalable or capital-efficient as we require. The modest improvement in gross margins (+1.0%) is directionally positive but entirely insufficient to offset the cash burn. In the disruptive innovation space, we seek companies that are not just spending for tomorrow but are also demonstrating evidence of a self-sustaining economic engine today. 300476 has not yet proven it can cross this chasm. We would need to see a clear path to cash flow generation and evidence that their R&D investments are translating into a defensible, compounding revenue stream before we can turn bullish."
+      }
+    },
+    "nassim_taleb_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 75,
+        "reasoning": "Fragile from high leverage, volatile earnings, no skin in the game via insider selling; lacks antifragility and convexity. Thin tails signal hidden risks."
+      }
+    },
+    "rakesh_jhunjhunwala_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Arre bhai, this is not a Rakesh Jhunjhunwala stock at all! Let me tell you why I am running away from this one. First, the margin of safety is negative 95% - the stock is trading at a market cap of over 33,000 crore rupees while my calculated intrinsic value is just about 1,484 crore. That is a ridiculous valuation gap with no buffer for error! Where is my 30% margin of safety? It has vanished into thin air.\n\nSecondly, the growth story is completely broken. Revenue is declining at a CAGR of minus 3.9% - negative growth, no good! Only 33% of years show consistent growth. Even though operating margins are an excellent 27.2%, which shows they have pricing power or cost control, the low ROE of just 7.4% tells me they are not generating enough return on the capital employed. Income growth of 7.5% is moderate, but that is not enough to justify such a bloated valuation.\n\nThird, the balance sheet is fragile. Current ratio of 0.92 means they cannot pay their short-term liabilities comfortably - this is a red flag! Debt ratio of 0.55 is moderate, but weak liquidity and negative free cash flow of minus 145 crore are killers. A company that cannot generate cash is not a wealth creator, simple as that.\n\nIn the style of Jhunjhunwala, I say: 'This stock is selling at a price that assumes perfect execution and rapid growth, but the fundamentals are deteriorating. There is no margin of safety, no financial strength, and poor cash generation. I would not touch this with a barge pole. The market is expecting too much, and the risk of capital destruction is very high. Sellers should exit, and buyers should stay away until there is a meaningful correction or a fundamental turnaround.'"
+      }
+    },
+    "sentiment_analyst_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 0.0,
+        "reasoning": {
+          "insider_trading": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_trades": 0,
+              "bullish_trades": 0,
+              "bearish_trades": 0,
+              "weight": 0.3,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "news_sentiment": {
+            "signal": "neutral",
+            "confidence": 0,
+            "metrics": {
+              "total_articles": 13,
+              "bullish_articles": 0,
+              "bearish_articles": 0,
+              "neutral_articles": 13,
+              "weight": 0.7,
+              "weighted_bullish": 0.0,
+              "weighted_bearish": 0.0
+            }
+          },
+          "combined_analysis": {
+            "total_weighted_bullish": 0.0,
+            "total_weighted_bearish": 0.0,
+            "signal_determination": "Neutral based on weighted signal comparison"
+          }
+        }
+      }
+    },
+    "phil_fisher_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Despite some positive headlines, this company fails nearly every test of a superior long-term investment according to Phil Fisher's principles. Revenue and EPS growth are anemic at 6.4% and 8.4% annually—far below the kind of sustained 15-20% growth that signals a true growth company. More critically, management has allocated only 2.8% of revenue to R&D, indicating insufficient investment in future products and technologies that could drive long-term expansion. The operating margin stability (25.3% to 27.2%) is a rare bright spot, but the low gross margin of 26.2% suggests weak pricing power and a commoditized business. Management efficiency is deeply troubling: return on equity is a mere 7.4%, and a debt-to-equity ratio of 1.23 points to excessive leverage that could hinder growth during downturns. Inconsistent or negative free cash flow further undermines the financial strength needed for sustained R&D and reinvestment. The valuation is extreme—a P/E of 259.51 with no positive free cash flow to justify it—indicating that the market has bid up the stock well beyond any reasonable assessment of long-term value. With no insider buying to signal management's own confidence, this stock resembles the classic overpriced 'growth illusion' that Fisher warned against."
+      }
+    },
+    "peter_lynch_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 80.0,
+        "reasoning": "Now, I look at this stock and I see a classic case of a high-flying story that's gotten ahead of itself. You've got strong growth on the surface – 28% revenue and 38% EPS growth – that's the kind of stuff that makes you think 'ten-bagger'. The headlines are positive too. But then you look at the price tag: a P/E of 259! And the earnings are only growing at 8.4% per year? That gives you a PEG ratio of over 30. That's like paying a king's ransom for a garden-variety growth rate. No thanks. Also, the debt-to-equity ratio is 1.23, meaning they're borrowing heavily, and free cash flow is negative – they're burning cash. That's a dangerous combination. Even though the story sounds good, the numbers tell me this stock is priced for perfection. If anything goes wrong, it could get crushed. I'd rather look for a company with a better balance between growth and price, maybe something you find in your local mall. This one is a pass for me."
+      }
+    },
+    "michael_burry_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 85.0,
+        "reasoning": "Negative FCF yield -0.4%, meaning company is destroying cash, not generating it. D/E 1.23 is dangerously high. Net debt and insider selling add to red flags. EV/EBIT unavailable — often a sign of distressed or negative earnings. No contrarian opportunity without solid fundamentals. Pass."
+      }
+    },
+    "stanley_druckenmiller_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 48.0,
+        "reasoning": "Cash is king here. The company shows mediocre growth momentum with revenue creeping at 6.4% and EPS growing 8.4%, which is pedestrian at best for a growth portfolio. The stock's 27.1% price momentum is decent, but that's likely just noise given the absurd valuation—a P/E of 259.5 and EV/EBIT of 224.5 with no free cash flow is a recipe for disaster if sentiment turns. The risk-reward is toxic: daily volatility of 4.07% and debt-to-equity of 1.23 mean one bad headline could wipe out 20-30% quickly, while upside is capped by the sky-high multiple. Sentiment is neutral to positive, but that's not enough to justify stepping in. I need asymmetric upside with limited downside, and this setup offers the exact opposite. I'll wait for a better entry or a catalyst that fundamentally changes the growth trajectory."
+      }
+    },
+    "ben_graham_agent": {
+      "300476": {
+        "signal": "neutral",
+        "confidence": 50.0,
+        "reasoning": "Upon careful analysis, the stock's current price of 267.65 presents a paradoxical situation. On the one hand, valuation appears extremely favorable with a Graham Number of only 0.26, suggesting the stock is trading at a massive margin of safety—over 570% below its calculated intrinsic value. However, I must exercise caution: such an extreme discrepancy often indicates either a calculation anomaly (possibly due to very low book value per share or negative equity in the Graham Number formula) or a fundamental flaw in the business that the market is correctly pricing. The financial strength is decidedly weak: the current ratio of 0.92 falls below my preferred threshold of 1.5, exposing the company to liquidity risks in economic downturns. A debt ratio of 0.55, while not catastrophic, is moderately high and adds to my concern. The earnings record is positive across all periods, which is a point in favor of stability, but the absence of any dividend record removes an additional safety cushion. Given the severe conflict between the supposedly extreme undervaluation and the concerning balance sheet, I cannot commit to a bullish stance. The prudent course is neutral, as the speculative allure of the Graham Number discount is outweighed by the tangible financial fragility."
+      }
+    },
+    "growth_analyst_agent": {
+      "300476": {
+        "signal": "bearish",
+        "confidence": 26,
+        "reasoning": {
+          "historical_growth": {
+            "score": 0.65,
+            "revenue_growth": 0.279928,
+            "revenue_trend": -0.061159618181818275,
+            "eps_growth": 0.38317799999999996,
+            "eps_trend": -0.2822158666666666,
+            "fcf_growth": null,
+            "fcf_trend": 0.0
+          },
+          "growth_valuation": {
+            "score": 0,
+            "peg_ratio": null,
+            "price_to_sales_ratio": null
+          },
+          "margin_expansion": {
+            "score": 0.2,
+            "gross_margin": 0.34458500000000003,
+            "gross_margin_trend": -0.022114496969696956,
+            "operating_margin": 0.272223,
+            "operating_margin_trend": -0.024784927272727277,
+            "net_margin": 0.233433,
+            "net_margin_trend": -0.021130527272727264
+          },
+          "insider_conviction": {
+            "score": 0.5,
+            "net_flow_ratio": 0,
+            "buys": 0,
+            "sells": 0
+          },
+          "financial_health": {
+            "score": 0.30000000000000004,
+            "debt_to_equity": 1.2338,
+            "current_ratio": 0.9214
+          },
+          "final_analysis": {
+            "signal": "bearish",
+            "confidence": 26,
+            "weighted_score": 0.37
+          }
+        }
+      }
+    },
+    "risk_management_agent": {
+      "300476": {
+        "remaining_position_limit": 10000.0,
+        "current_price": 340.22,
+        "volatility_metrics": {
+          "daily_volatility": 0.04107728628231462,
+          "annualized_volatility": 0.6520817042184566,
+          "volatility_percentile": 96.0,
+          "data_points": 54
+        },
+        "correlation_metrics": {
+          "avg_correlation_with_active": null,
+          "max_correlation_with_active": null,
+          "top_correlated_tickers": []
+        },
+        "reasoning": {
+          "portfolio_value": 100000.0,
+          "current_position_value": 0.0,
+          "base_position_limit_pct": 0.1,
+          "correlation_multiplier": 1.0,
+          "combined_position_limit_pct": 0.1,
+          "position_limit": 10000.0,
+          "remaining_limit": 10000.0,
+          "available_cash": 100000.0,
+          "risk_adjustment": "Volatility x Correlation adjusted: 10.0% (base 10.0%)"
+        }
+      }
+    }
+  }
+}

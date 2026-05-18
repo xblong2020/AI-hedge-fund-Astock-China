@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 对冲基金分析报告 - 600519</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', 'PingFang SC', 'Segoe UI', Roboto, sans-serif;
+    background: #0a0e17;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 50%, #1a1f2e 100%);
+    border-bottom: 1px solid #21262d;
+    padding: 40px 0;
+    text-align: center;
+}
+.header h1 {
+    font-size: 2.4em;
+    font-weight: 800;
+    background: linear-gradient(90deg, #58a6ff, #3fb950, #d2991d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.header .subtitle {
+    color: #8b949e;
+    font-size: 0.95em;
+    margin-top: 8px;
+}
+.header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+.header .meta span {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.85em;
+    color: #8b949e;
+}
+
+/* Decision Cards */
+.decision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+.decision-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+.decision-card .ticker {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #58a6ff;
+    margin-bottom: 12px;
+}
+.decision-card .action {
+    display: inline-block;
+    font-size: 1.8em;
+    font-weight: 800;
+    padding: 8px 28px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+.action-BUY, .action-COVER { background: #0d3320; color: #3fb950; border: 2px solid #238636; }
+.action-SELL, .action-SHORT { background: #331212; color: #f85149; border: 2px solid #da3633; }
+.action-HOLD { background: #1d2214; color: #d2991d; border: 2px solid #9e6a03; }
+.decision-card .confidence {
+    font-size: 0.9em;
+    color: #8b949e;
+    margin-top: 8px;
+}
+.decision-card .confidence-bar {
+    width: 100%;
+    height: 6px;
+    background: #21262d;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+.decision-card .confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+/* 投资组合摘要 */
+.portfolio-summary {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+}
+.portfolio-summary h2 {
+    color: #58a6ff;
+    font-size: 1.2em;
+    margin-bottom: 16px;
+}
+.signal-bars {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.signal-bar {
+    flex: 1;
+    text-align: center;
+}
+.signal-bar .label {
+    font-size: 0.8em;
+    color: #8b949e;
+    margin-bottom: 4px;
+}
+.signal-bar .bar {
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+.signal-bar .count {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.bullish-bar { background: #238636; }
+.bearish-bar { background: #da3633; }
+.neutral-bar { background: #9e6a03; }
+.bullish-text { color: #3fb950; }
+.bearish-text { color: #f85149; }
+.neutral-text { color: #d2991d; }
+
+/* Tables */
+.agent-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+.agent-table th {
+    background: #21262d;
+    color: #8b949e;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid #30363d;
+    position: sticky;
+    top: 0;
+}
+.agent-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #21262d;
+}
+.agent-table tr:hover { background: #1c2128; }
+
+/* 代理 Detail Cards */
+.agent-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.agent-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.agent-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid #21262d;
+}
+.agent-card-header .name {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+.agent-card-header .signal-badge {
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+.signal-BULLISH { background: #0d3320; color: #3fb950; }
+.signal-BEARISH { background: #331212; color: #f85149; }
+.signal-NEUTRAL { background: #1d2214; color: #d2991d; }
+.agent-card-body {
+    padding: 14px 18px;
+    font-size: 0.85em;
+    color: #8b949e;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.agent-card-body .reasoning {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.agent-card-footer {
+    padding: 10px 18px;
+    border-top: 1px solid #21262d;
+    font-size: 0.8em;
+    color: #484f58;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #484f58;
+    font-size: 0.8em;
+    border-top: 1px solid #21262d;
+    margin-top: 40px;
+}
+
+/* Print */
+@media print {
+    body { background: white; color: black; }
+    .header { background: #f0f0f0; }
+    .agent-card, .decision-card, .portfolio-summary {
+        background: white;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>AI 对冲基金 · A股分析报告</h1>
+<div class="subtitle">多代理联合投研报告</div>
+<div class="meta">
+<span>&#x1f4c8; 600519</span>
+<span>&#x1f9e0; DeepSeek / deepseek-chat</span>
+<span>&#x1f4c5; 2026-02-17 &rarr; 2026-05-17</span>
+</div>
+</div>
+<div class="container">
+<div class="decision-grid"><div class="decision-card">
+<div class="ticker">600519</div>
+<div class="action action-SHORT">SHORT</div>
+<div class="confidence">信心度: <strong>75.0%</strong></div>
+<div class="confidence-bar"><div class="confidence-fill" style="width:75.0%;background:#f85149;"></div></div>
+<div style="margin-top:12px;font-size:0.85em;color:#8b949e;">Majority bearish signals with high conviction, despite bullish from Ben Graham.</div>
+</div></div>
+<div class="portfolio-summary">
+<h2>&#x1f4ca; 投资组合摘要</h2>
+<div class="signal-bars">
+<div class="signal-bar">
+<div class="label">看多</div>
+<div class="bar bullish-bar" style="width:100%;opacity:0.3;"></div>
+<div class="count bullish-text">2</div>
+</div>
+<div class="signal-bar">
+<div class="label">看空</div>
+<div class="bar bearish-bar" style="width:100%;opacity:0.3;"></div>
+<div class="count bearish-text">11</div>
+</div>
+<div class="signal-bar">
+<div class="label">中性</div>
+<div class="bar neutral-bar" style="width:100%;opacity:0.3;"></div>
+<div class="count neutral-text">6</div>
+</div>
+</div>
+<table class="agent-table">
+<thead><tr><th>代码</th><th>操作</th><th>数量</th><th>信心度</th></tr></thead>
+<tbody><tr>
+<td style="color:#58a6ff;font-weight:600;">600519</td>
+<td><span class="action action-SHORT">SHORT</span></td>
+<td>14</td>
+<td>75.0%</td>
+</tr></tbody>
+</table>
+</div>
+<div style="margin:30px 0;">
+<h2 style="color:#58a6ff;margin-bottom:12px;">&#x1f9e0; 代理分析概览</h2>
+<table class="agent-table">
+<thead><tr><th>代理</th><th>代码</th><th>信号</th><th>Conf</th><th style="min-width:300px;">分析内容</th></tr></thead>
+<tbody><tr>
+<td style="color:#58a6ff;">Fundamentals Analyst</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BULLISH">BULLISH</span></td>
+<td>50.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">{
+  "profitability_signal": {
+    "signal": "bullish",
+    "details": "ROE: 10.57%, Net Margin: 52.2...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Technical Analyst</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>8.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">指标信号置信数值趋势跟踪BEARISH30%ADX: 29.873111781661127趋势强度: 0.29873111781661127均值回归BULLISH57%Z-Score: -2.2618...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Valuation Analyst</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>100.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">{
+  "dcf_analysis": {
+    "signal": "bearish",
+    "details": "Value: $374,221,184,531.91, Market Ca...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Warren Buffett</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>30.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Weak ROE of 10.6% and inconsistent earnings signal poor business quality, outside circle of competen...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Growth Analyst</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>28.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">{
+  "historical_growth": {
+    "score": 0.15000000000000002,
+    "revenue_growth": 0.065380000000000...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Aswath Damodaran</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>30.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Moutai's story remains one of a premium baijiu brand with strong pricing power and high margins (gro...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Cathie Wood</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>72.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">While Moutai (600519) exhibits strong financial fundamentals—including a stellar 68.2% gross margin,...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Bill Ackman</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>85.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Let’s be brutally honest here. This is Kweichow Moutai, the crown jewel of Chinese baijiu, a brand w...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Mohnish Pabrai</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>65.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Mohnish Pabrai here. I look at 600519 and see a business with superb downside protection—massive net...</td>
+</tr><tr>
+<td style="color:#58a6ff;">News Sentiment</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>0.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">新闻情绪分析总文章: 14 | 看多: 0 | 看空: 0 | LLM分类: 0NEUTRAL (0%)</td>
+</tr><tr>
+<td style="color:#58a6ff;">Sentiment Analyst</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>0.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">内幕交易分析总交易: 0 | 看多: 0 | 看空: 0NEUTRAL (0%)新闻情绪分析总文章: 14 | 看多: 0 | 看空: 0NEUTRAL (0%)综合结论: Neutral based...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Ben Graham</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BULLISH">BULLISH</span></td>
+<td>87.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">The stock presents an overwhelming margin of safety according to our central valuation metric. The c...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Nassim Taleb</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>55.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Antifragile balance sheet with convex margins, but no skin in game and low vol asymmetry limit upsid...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Michael Burry</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>75.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">FCF yield 1.6% too low for any value thesis. EV/EBIT unavailable. Net insider selling confirms no co...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Charlie Munger</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>34.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Expensive valuation with negative margin of safety and low FCF yield outweigh strong predictability ...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Phil Fisher</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-NEUTRAL">NEUTRAL</span></td>
+<td>45.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Maotai possesses several admirable qualities consistent with Fisher's investment philosophy: excepti...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Rakesh Jhunjhunwala</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>85.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Arre bhai, let me tell you straight—this stock does not pass my test. The market cap is a whopping 1...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Peter Lynch</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>85.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">Well, I've seen this kind of stock before. Everyone loves the brand, and the fundamentals are rock-s...</td>
+</tr><tr>
+<td style="color:#58a6ff;">Stanley Druckenmiller</td>
+<td style="color:#c9d1d9;">600519</td>
+<td><span class="signal-badge signal-BEARISH">BEARISH</span></td>
+<td>75.0%</td>
+<td style="color:#8b949e;font-size:0.85em;">This is a classic case where momentum has completely collapsed and the valuation is egregiously stre...</td>
+</tr></tbody>
+</table>
+</div>
+<div style="margin:30px 0;">
+<h2 style="color:#58a6ff;margin-bottom:12px;">&#x1f50d; 代理详细分析</h2>
+<div class="agent-detail-grid">
+<div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Fundamentals Analyst &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BULLISH">BULLISH 50%</span>
+</div>
+<div class="agent-card-body">
+<pre style='font-size:0.8em;color:#8b949e;max-height:200px;overflow-y:auto'>{
+  "profitability_signal": {
+    "signal": "bullish",
+    "details": "ROE: 10.57%, Net Margin: 52.22%, Op Margin: 68.62%"
+  },
+  "growth_signal": {
+    "signal": "neutral",
+    "details": "Revenue Growth: 6.54%, Earnings Growth: 1.47%"
+  },
+  "financial_health_signal": {
+    "signal": "bullish",
+    "details": "Current Ratio: 7.06, D/E: 0.14"
+  },
+  "price_ratios_signal": {
+    "signal": "neutral",
+    "details": "P/E: 20.28, P/B: 6.16, P/S: N/A"
+  }
+}</pre>
+</div>
+<div class="agent-card-footer">代理: Fundamentals Analyst &middot; 信心度: 50.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Technical Analyst &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 8%</span>
+</div>
+<div class="agent-card-body">
+<table style='width:100%;border-collapse:collapse;font-size:0.85em'><tr style='border-bottom:1px solid #21262d'><th style='text-align:left;padding:6px;color:#8b949e'>指标</th><th style='text-align:left;padding:6px;color:#8b949e'>信号</th><th style='text-align:left;padding:6px;color:#8b949e'>置信</th><th style='text-align:left;padding:6px;color:#8b949e'>数值</th></tr><tr><td style='color:#58a6ff;font-weight:600'>趋势跟踪</td><td><span style='color:#f85149;font-weight:700'>BEARISH</span></td><td>30%</td><td><div style='font-size:0.8em;color:#8b949e;'>ADX: <b>29.873111781661127</b></div><div style='font-size:0.8em;color:#8b949e;'>趋势强度: <b>0.29873111781661127</b></div></td></tr><tr><td style='color:#58a6ff;font-weight:600'>均值回归</td><td><span style='color:#3fb950;font-weight:700'>BULLISH</span></td><td>57%</td><td><div style='font-size:0.8em;color:#8b949e;'>Z-Score: <b>-2.261854725063612</b></div><div style='font-size:0.8em;color:#8b949e;'>布林带位置: <b>0.10522485306770195</b></div><div style='font-size:0.8em;color:#8b949e;'>RSI(14): <b>28.970935662875675</b></div><div style='font-size:0.8em;color:#8b949e;'>RSI(28): <b>31.452535264963785</b></div></td></tr><tr><td style='color:#58a6ff;font-weight:600'>动量</td><td><span style='color:#d2991d;font-weight:700'>NEUTRAL</span></td><td>50%</td><td><div style='font-size:0.8em;color:#8b949e;'>1月动量: <b>-0.07734249267675053</b></div><div style='font-size:0.8em;color:#8b949e;'>3月动量: <b>0.0</b></div><div style='font-size:0.8em;color:#8b949e;'>6月动量: <b>0.0</b></div><div style='font-size:0.8em;color:#8b949e;'>成交量动量: <b>1.2824193609330328</b></div></td></tr><tr><td style='color:#58a6ff;font-weight:600'>波动率</td><td><span style='color:#d2991d;font-weight:700'>NEUTRAL</span></td><td>50%</td><td><div style='font-size:0.8em;color:#8b949e;'>历史波动率: <b>0.2261220511573954</b></div><div style='font-size:0.8em;color:#8b949e;'>ATR比率: <b>0.016435082228998008</b></div></td></tr><tr><td style='color:#58a6ff;font-weight:600'>统计套利</td><td><span style='color:#d2991d;font-weight:700'>NEUTRAL</span></td><td>50%</td><td><div style='font-size:0.8em;color:#8b949e;'>Hurst指数: <b>4.686994974318529e-16</b></div><div style='font-size:0.8em;color:#8b949e;'>偏度: <b>0.0</b></div><div style='font-size:0.8em;color:#8b949e;'>峰度: <b>0.0</b></div></td></tr></table>
+</div>
+<div class="agent-card-footer">代理: Technical Analyst &middot; 信心度: 8.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Valuation Analyst &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 100%</span>
+</div>
+<div class="agent-card-body">
+<pre style='font-size:0.8em;color:#8b949e;max-height:200px;overflow-y:auto'>{
+  "dcf_analysis": {
+    "signal": "bearish",
+    "details": "Value: $374,221,184,531.91, Market Cap: $1,669,213,583,084.00, Gap: -77.6%, Weight: 35%\n  WACC: 10.5%, Bear: $242,532,026,707.13, Bull: $500,622,242,274.00, Range: $258,090,215,566.87"
+  },
+  "residual_income_analysis": {
+    "signal": "bearish",
+    "details": "Value: $234,985,183,284.24, Market Cap: $1,669,213,583,084.00, Gap: -85.9%, Weight: 10%"
+  },
+  "dcf_scenario_analysis": {
+    "bear_case": "$242,532,026,707.13",
+    "base_case": "$375,983,884,559.48",
+    "bull_case": "$500,622,242,274.00",
+    "wacc_used": "10.5%",
+    "fcf_periods_analyzed": 7
+  }
+}</pre>
+</div>
+<div class="agent-card-footer">代理: Valuation Analyst &middot; 信心度: 100.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Warren Buffett &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 30%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Weak ROE of 10.6% and inconsistent earnings signal poor business quality, outside circle of competence.</div>
+</div>
+<div class="agent-card-footer">代理: Warren Buffett &middot; 信心度: 30.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Growth Analyst &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 28%</span>
+</div>
+<div class="agent-card-body">
+<pre style='font-size:0.8em;color:#8b949e;max-height:200px;overflow-y:auto'>{
+  "historical_growth": {
+    "score": 0.15000000000000002,
+    "revenue_growth": 0.06538000000000001,
+    "revenue_trend": 0.018236593939393947,
+    "eps_growth": 0.017774,
+    "eps_trend": 0.019687721212121197,
+    "fcf_growth": null,
+    "fcf_trend": 0.0
+  },
+  "growth_valuation": {
+    "score": 0,
+    "peg_ratio": null,
+    "price_to_sales_ratio": null
+  },
+  "margin_expansion": {
+    "score": 1.0,
+    "gross_margin": 0.8975920000000001,
+    "gross_margin_trend": 0.0014277696969697625,
+    "operating_margin": 0.686198,
+    "operating_margin_trend": 0.0007464969696968982,
+    "net_margin": 0.522245,
+    "net_margin_trend": 0.000943509090909181
+  },
+  "insider_conviction": {
+    "score": 0.5,
+    "net_flow_ratio": 0,
+    "buys": 0,
+    "sells": 0
+  },
+  "financial_health": {
+    "score": 1.0,
+    "debt_to_equity": 0.138,
+    "current_ratio": 7.0607
+  },
+  "final_analysis": {
+    "signal": "bearish",
+    "confidence": 28,
+    "weighted_score": 0.36
+  }
+}</pre>
+</div>
+<div class="agent-card-footer">代理: Growth Analyst &middot; 信心度: 28.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Aswath Damodaran &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 30%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Moutai's story remains one of a premium baijiu brand with strong pricing power and high margins (gross ~90%, net ~52%). Revenue growth is modest at 6.5%, but FCFF is flat or declining, and free cash flow yield is negative (-0.26%). The DCF can't be computed due to missing FCFF data, but relative valuation shows a P/E of ~20x, which is in line with history. The balance sheet is pristine (current ratio 7.1, negligible debt). Major uncertainties include China's economic slowdown, regulatory risks, and changing consumer tastes. Without a clear intrinsic value estimate and with stagnant cash flows, the risk/reward is balanced, warranting a neutral stance.</div>
+</div>
+<div class="agent-card-footer">代理: Aswath Damodaran &middot; 信心度: 30.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Cathie Wood &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 72%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>While Moutai (600519) exhibits strong financial fundamentals—including a stellar 68.2% gross margin, robust free cash flow generation, and a 125.1% surge in R&D investment that signals management’s commitment to innovation—the company operates in the mature, slow-growth baijiu spirits market, not in a disruptive technology or transformative innovation sector that Cathie Wood’s strategy targets. The valuation analysis reveals a significant red flag: the calculated intrinsic value is approximately ¥963 billion, yet the market cap stands at ¥1.67 trillion, implying a -42.3% margin of safety. This indicates the stock is trading at a substantial premium to its fundamental worth, with limited potential for the exponential, multi-year revenue acceleration we seek. The high operating margin of 69.6% and consistent cash flows suggest a quality business, but the lack of a disruptive catalyst, coupled with an overvalued entry point, positions this as a poor fit for a high-conviction, growth-at-a-reasonable-price innovation portfolio. I would look for companies disrupting trillion-dollar markets, not defending legacy ones.</div>
+</div>
+<div class="agent-card-footer">代理: Cathie Wood &middot; 信心度: 72.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Bill Ackman &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 85%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Let’s be brutally honest here. This is Kweichow Moutai, the crown jewel of Chinese baijiu, a brand with a moat so wide it’s practically a sovereign monopoly on luxury status in China. The revenue growth is anemic—cumulatively 6.5%, which for a company with pricing power and scarcity should be double digits. Operating margins are decent, but ROE at 10.6% is pathetic for a company of this caliber, indicating capital is being wasted or diluted. The balance sheet is clean—low leverage, share buybacks—but no dividends? That’s a capital allocation failure. Management is sitting on a pile of cash and not returning it to shareholders who deserve it. The activism score is zero because margins are already good? That’s nonsense. There’s massive opportunity to unlock value: aggressive buybacks, dividends, or even spinning off non-core assets. The valuation is the smoking gun: intrinsic value of ~$446 billion versus market cap of $1.67 trillion, a 73% downside margin of safety. This stock is wildly overpriced even for a premium brand. Without operational improvements, it’s a value trap. I’m bearish. The market is pricing in perfection, and I see no catalyst for it. Capital discipline and valuation scream sell.</div>
+</div>
+<div class="agent-card-footer">代理: Bill Ackman &middot; 信心度: 85.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Mohnish Pabrai &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 65%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Mohnish Pabrai here. I look at 600519 and see a business with superb downside protection—massive net cash, strong liquidity, and almost no leverage. That gives me comfort. However, the valuation is a hard no. At a 1.7% free cash flow yield, I'm paying roughly 59x FCF for a business that has declining FCF. Even with asset-light operations, there's no margin of safety. The double potential score is zero—I see no realistic path to double my capital in 2-3 years from this price without extreme multiple expansion, which is speculation, not investing. My checklist says: heads I win (downside protected) but tails I lose much (expensive entry). I skip. Intrinsic value may be rising, but price is far ahead. Capital preservation comes first. This is a pass.</div>
+</div>
+<div class="agent-card-footer">代理: Mohnish Pabrai &middot; 信心度: 65.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; News Sentiment &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 0%</span>
+</div>
+<div class="agent-card-body">
+<div><div style='font-weight:600;color:#58a6ff;margin-bottom:4px'>新闻情绪分析</div><span style='font-size:0.85em;color:#8b949e'>总文章: 14 | 看多: 0 | 看空: 0 | LLM分类: 0</span><span class='signal-badge signal-NEUTRAL' style='margin-left:8px'>NEUTRAL (0%)</span></div>
+</div>
+<div class="agent-card-footer">代理: News Sentiment &middot; 信心度: 0.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Sentiment Analyst &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 0%</span>
+</div>
+<div class="agent-card-body">
+<div style='margin-bottom:10px'><div style='font-weight:600;color:#58a6ff;margin-bottom:4px'>内幕交易分析</div><span style='font-size:0.85em;color:#8b949e'>总交易: 0 | 看多: 0 | 看空: 0</span><span class='signal-badge signal-NEUTRAL' style='margin-left:8px'>NEUTRAL (0%)</span></div><div style='margin-bottom:10px'><div style='font-weight:600;color:#58a6ff;margin-bottom:4px'>新闻情绪分析</div><span style='font-size:0.85em;color:#8b949e'>总文章: 14 | 看多: 0 | 看空: 0</span><span class='signal-badge signal-NEUTRAL' style='margin-left:8px'>NEUTRAL (0%)</span></div><div style='padding:8px;background:#1c2128;border-radius:6px;font-size:0.85em;color:#d2991d'>综合结论: Neutral based on weighted signal comparison</div>
+</div>
+<div class="agent-card-footer">代理: Sentiment Analyst &middot; 信心度: 0.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Ben Graham &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BULLISH">BULLISH 87%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>The stock presents an overwhelming margin of safety according to our central valuation metric. The current price of 1,466.8 is nearly 24 times our calculated Graham Number of 3.32, indicating a 2,387% margin of safety. This extraordinary discount is the most compelling factor in our analysis. Financially, the company is in a fortress-like position: a current ratio of 7.06 greatly exceeds Graham's minimum threshold of 2.0, and a debt ratio of only 0.12 is well below the conservative limit of 0.50, demonstrating no dependence on leverage. Earnings have been positive and growing across all available periods, satisfying our requirement for stable profitability. The only caution is the lack of dividend data, which prevents us from assessing payout consistency—a secondary safety factor for Graham. Nevertheless, given the massive discount to intrinsic value and the robust financial strength, we recommend a bullish stance with high confidence.</div>
+</div>
+<div class="agent-card-footer">代理: Ben Graham &middot; 信心度: 87.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Nassim Taleb &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 55%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Antifragile balance sheet with convex margins, but no skin in game and low vol asymmetry limit upside optionality.</div>
+</div>
+<div class="agent-card-footer">代理: Nassim Taleb &middot; 信心度: 55.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Michael Burry &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 75%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>FCF yield 1.6% too low for any value thesis. EV/EBIT unavailable. Net insider selling confirms no conviction. Limited negative press means no contrarian entry. Balance sheet clean (D/E 0.14) but that alone doesn't justify valuation. Pass.</div>
+</div>
+<div class="agent-card-footer">代理: Michael Burry &middot; 信心度: 75.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Charlie Munger &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 34%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Expensive valuation with negative margin of safety and low FCF yield outweigh strong predictability and low leverage.</div>
+</div>
+<div class="agent-card-footer">代理: Charlie Munger &middot; 信心度: 34.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Phil Fisher &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-NEUTRAL">NEUTRAL 45%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Maotai possesses several admirable qualities consistent with Fisher's investment philosophy: exceptional and stable gross margins (68.2%), extremely low debt (debt-to-equity of 0.14), consistent free cash flow generation over the past five years, and a management team that has demonstrated capital discipline. These factors point to a high-quality business with strong brand moat and pricing power. However, this company fails Fisher's primary test of superior long-term growth potential. Revenue growth has been minimal at 1.6% annually, and EPS growth is nearly stagnant at 0.4%. Furthermore, R&D spending is negligible at 0.1% of revenue, indicating no significant investment in future products or innovations to drive expansion. The most glaring concern is valuation: with a P/E ratio of 59.29 and price-to-free-cash-flow of 63.46, the market has bid the stock to levels that completely discount many years of future prosperity. Even for a great company, such prices leave no margin of safety and violate Fisher's principle of being mindful of what one pays. Given the combination of very low growth prospects and an excessively rich valuation, the risk-to-reward is unfavorable for a new long-term commitment. The neutral sentiment from headlines and lack of insider activity neither confirms nor contradicts this view. Thus, while the business quality is high, I cannot be sufficiently confident in above-average future returns from current prices to issue a bullish signal.</div>
+</div>
+<div class="agent-card-footer">代理: Phil Fisher &middot; 信心度: 45.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Rakesh Jhunjhunwala &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 85%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Arre bhai, let me tell you straight—this stock does not pass my test. The market cap is a whopping 1,669 crore, but my calculated intrinsic value is only 376 crore. That is a negative margin of safety of minus 77%! Where is the value? I look for a 30% margin of safety to sleep peacefully, but here the stock is trading at more than four times its true worth. This is not a business to buy; it is a business to avoid like the plague.
+
+Now, look at the growth—this is the biggest red flag. Revenue CAGR is just 2.1%, income CAGR is 1.6%, and growth is inconsistent with only 25% of years showing positive momentum. A company that is not growing consistently is not my cup of tea. I want businesses that grow like a champ, not one that is crawling.
+
+The balance sheet is strong, yes—low debt ratio of 0.12 and current ratio of 7.06 show financial strength. Operating margins are excellent at 69.6%, and free cash flow is positive. But what good is a strong balance sheet if the business is not growing and the stock is priced for the moon? Even decent ROE of 10% doesn't excite me—I prefer ROE above 15%.
+
+Management data is missing, so I can't judge if they are shareholder-friendly. But the biggest problem is valuation. I always say, 'Buy value, not price.' Here, the price has run far ahead of value. This is like buying a Maruti at a Rolls-Royce price. Not my style.
+
+Sell if you hold, don't buy if you don't. Fundamentals are not deteriorating dramatically, but the valuation gap is so extreme that it violates my core principle of margin of safety. I would wait for a better entry point—a 30-40% correction would make it interesting.</div>
+</div>
+<div class="agent-card-footer">代理: Rakesh Jhunjhunwala &middot; 信心度: 85.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Peter Lynch &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 85%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>Well, I've seen this kind of stock before. Everyone loves the brand, and the fundamentals are rock-solid – low debt, high margins, and they print cash. But here's the kicker: the price you're paying for that growth is just absurd. The PEG ratio is through the roof at 134. That means you're paying 134 times the company's earnings growth rate. That's not a bargain, that's a fantasy. With earnings barely growing at 0.4% annually, this stock would need a miracle to become a ten-bagger from here. It's like buying a solid, dependable car for the price of a Ferrari. The story is good, but the price is terrible. I'd rather wait for a better entry point.</div>
+</div>
+<div class="agent-card-footer">代理: Peter Lynch &middot; 信心度: 85.0%</div>
+</div><div class="agent-card">
+<div class="agent-card-header">
+<span class="name">&#x1f9e0; Stanley Druckenmiller &rarr; <span style="color:#58a6ff;">600519</span></span>
+<span class="signal-badge signal-BEARISH">BEARISH 75%</span>
+</div>
+<div class="agent-card-body">
+<div style='white-space:pre-wrap;word-break:break-word'>This is a classic case where momentum has completely collapsed and the valuation is egregiously stretched, offering a terrible risk-reward. Revenue growth is nearly non-existent at 1.6% and EPS growth is a paltry 0.4%, yet the market is pricing this at a P/E of 59x and P/FCF of 63x. That's a recipe for a major drawdown. The stock is already down 9.1% in recent price momentum, which confirms the trend is against us. While the debt is low and headlines are neutral, those factors are not sufficient to justify holding a stock with zero growth at a 60x multiple. I am not a value investor; I need to see growth or a catalyst. Here, there is no catalyst, only downside risk of multiple compression. I see much better asymmetric opportunities elsewhere and will preserve capital by avoiding this trap.</div>
+</div>
+<div class="agent-card-footer">代理: Stanley Druckenmiller &middot; 信心度: 75.0%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+    AI 对冲基金 CN &middot; 生成时间 2026-05-17 23:34:59 CST
+</div>
+</body>
+</html>
